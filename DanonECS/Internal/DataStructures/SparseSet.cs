@@ -66,6 +66,26 @@ namespace DanonEcs.Internal.DataStructures
             m_recycledDenseIndices[m_recycledDenseIndexCount] = denseIndex;
             m_recycledDenseIndexCount++;
         }
+
+        /// <summary>
+        /// Clears the sparse set. Recycles all used indices.
+        /// </summary>
+        public void Clear()
+        {
+            ResizeRecycledDenseIndicesIfRequired(m_denseCount);
+            
+            for (var i = 0; i < m_denseCount; i++)
+            {
+                m_dense[i] = default;
+                m_recycledDenseIndices[i] = i;
+            }
+            
+            for (var i = 0; i < m_sparse.Length; i++)
+                m_sparse[i] = -1;
+
+            m_recycledDenseIndexCount = m_denseCount;
+            m_denseCount = 0;
+        }
         
         /// <summary>
         /// Ensures that the dense array can hold indices up to the required capacity.

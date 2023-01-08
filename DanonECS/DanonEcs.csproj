@@ -39,9 +39,9 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Builders\WorldBuilder.cs" />
         <Compile Include="Entity.cs" />
         <Compile Include="Internal\DataStructures\SparseSet.cs" />
-        <Compile Include="Internal\EcsData.cs" />
         <Compile Include="World.cs" />
     </ItemGroup>
     <ItemGroup>
